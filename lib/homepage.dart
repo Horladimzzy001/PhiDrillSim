@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'calculationTable.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -99,21 +101,26 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     }
 
-    // If validation is successful, navigate to a new route with the data
-    Navigator.pushNamed(context, '/CalculationTable', arguments: {
-      'surfaceLocation': {
-        'north': _northController.text,
-        'east': _eastController.text,
-        'tvd': _tvdController.text,
-      },
-      'targets': targets.map((target) {
-        return {
-          'north': target['north']!.text,
-          'east': target['east']!.text,
-          'tvd': target['tvd']!.text,
-        };
-      }).toList(),
-    });
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CalculationTable(
+          surfaceLocation: {
+            'north': _northController.text,
+            'east': _eastController.text,
+            'tvd': _tvdController.text,
+          },
+          targets: targets.map((target) {
+            return {
+              'north': target['north']!.text,
+              'east': target['east']!.text,
+              'tvd': target['tvd']!.text,
+            };
+          }).toList(),
+        ),
+      ),
+    );
   }
 
   @override

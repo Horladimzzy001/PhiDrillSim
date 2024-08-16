@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:convert';
 
-class CalculationTable extends StatelessWidget {
-  final Map<String, dynamic> surfaceLocation = {};
-  final List<Map<String, dynamic>> targets = [];
+import 'package:phildrim/threeDdisplay.dart';
 
-  
+class CalculationTable extends StatelessWidget {
+  final Map<String, dynamic> surfaceLocation;
+  final List<Map<String, dynamic>> targets;
+
+
+  const CalculationTable({super.key, required this.surfaceLocation, required this.targets});
+
 
   List<Map<String, double>> get combinedLocations {
     return [
@@ -124,12 +128,12 @@ class CalculationTable extends StatelessWidget {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("Validation Error"),
-          content: Text("Please fill in all Surface Location fields."),
+          title: const Text("Validation Error"),
+          content: const Text("Please fill in all Surface Location fields."),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('OK'),
+              child: const Text('OK'),
             )
           ],
         ),
@@ -141,12 +145,12 @@ class CalculationTable extends StatelessWidget {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("Validation Error"),
-          content: Text("Please add at least one Target Location."),
+          title: const Text("Validation Error"),
+          content: const Text("Please add at least one Target Location."),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('OK'),
+              child: const Text('OK'),
             )
           ],
         ),
@@ -154,8 +158,15 @@ class CalculationTable extends StatelessWidget {
       return;
     }
 
-    Navigator.pushNamed(context, '/plot3d',
-        arguments: {'surfaceLocation': surfaceLocation, 'targets': targets});
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Plot3DScreen(
+          surfaceLocation: surfaceLocation,
+          targets: targets,
+        ),
+      ),
+    );
   }
 
   @override
