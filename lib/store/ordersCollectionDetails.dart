@@ -30,8 +30,9 @@ class _OrdersDetailsCollectionState extends State<OrdersDetailsCollection> {
                 ),
                 SizedBox(height: 20,),
                 ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: 4,
+                  itemCount: 44,
                     itemBuilder: (context, index) {
                       return Container(
                         child: Row(

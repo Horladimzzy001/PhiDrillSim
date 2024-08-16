@@ -3,9 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:peony_app_kazeem/accountsreens/createaccount.dart';
 import 'package:peony_app_kazeem/accountsreens/weSentAnOtp.dart';
+import 'package:peony_app_kazeem/store/cartPage.dart';
 import 'package:peony_app_kazeem/store/orders.dart';
 import 'package:peony_app_kazeem/store/ordersCollectionDetails.dart';
 import 'package:peony_app_kazeem/store/orderscollection.dart';
+import 'package:peony_app_kazeem/store/storepage.dart';
 
 class routeManager {
   static const String homePageOne = '/';
@@ -28,7 +30,7 @@ class routeManager {
     switch (settings.name) {
       case homePageOne:
         return MaterialPageRoute(
-            builder: ((context) => OrdersDetailsCollection()));
+            builder: ((context) => storepage() ));
       case weSentAnOtp:
         return MaterialPageRoute(
             builder: ((context) => otp()));

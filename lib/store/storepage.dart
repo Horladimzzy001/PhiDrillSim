@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -74,29 +75,38 @@ class _storepageState extends State<storepage> {
                  
                     children: [
                       Container(
-                        
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)
-                          
+                        height: 221,
+                        child: Column(
+                         
+                          children: [
+                            Container(
+                              
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10)
+                                
+                              ),
+                              padding: EdgeInsets.all(8.0),
+                              height: 150,
+                              width: 150,
+                              child: Image(image: AssetImage(items[index]['image'])),
+                            ),
+                            SizedBox(height: 10,),
+                            Container(
+                              width: 150,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                              Text(items[index]['name']),
+                              Text(items[index]['age'],style: TextStyle(fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+                            )
+                              
+                          ],
                         ),
-                        padding: EdgeInsets.all(8.0),
-                        height: 150,
-                        width: 150,
-                        child: Image(image: AssetImage(items[index]['image'])),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 30,top: 10),
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(items[index]['name'])),
-                      ),
-                     Padding(
-                        padding: const EdgeInsets.only(left: 30,top: 5),
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(items[index]['age'],style: TextStyle(fontWeight: FontWeight.bold),),),
-                      ),
+                     
                       SizedBox(height: 10.7,),
                       SizedBox(
                         height: 40,
